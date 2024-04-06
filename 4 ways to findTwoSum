@@ -2,6 +2,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 	}
+
+//BabbleSort Algorism: Time Complexity: O(n2)
 	public int[] twoSum1(int[] nums, int target) {
     for (int i = 0; i < nums.length; i++) {
         for (int j = i + 1; j < nums.length; j++) {
@@ -12,6 +14,10 @@ public class Main {
     }
     throw new IllegalArgumentException("No two sum solution");
 }
+
+
+
+//Two pointer Technique:
 public int[] twoSum2(int[] nums, int target) {
     int i = 0;
     int j = 1;
@@ -32,6 +38,9 @@ public int[] twoSum2(int[] nums, int target) {
     }
     throw new IllegalArgumentException("No two sum solution");
 }
+
+
+
 public int[] twoSum3(int[] nums, int target) {
     Arrays.sort(nums);
     for (int i = 0; i < nums.length; i++) {
@@ -43,6 +52,9 @@ public int[] twoSum3(int[] nums, int target) {
     }
     throw new IllegalArgumentException("No two sum solution");
 }
+
+
+
 public int[] twoSum4(int[] nums, int target) {
     return twoSum4Helper(nums, target, 0, nums.length - 1);
 }
