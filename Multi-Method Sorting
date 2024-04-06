@@ -1,0 +1,129 @@
+import java.util.Arrays;
+
+public class Main {
+	public static void main(String[] args) {
+		int[] a ={9, 7, 1, 5, 2, 11, 9, 7, 15, 2, 15, 4, 21, 8, -1, 0};
+		int[] b = {9, 7, 15, 2};
+		int[] c = {-1, 0, 2, 3, 4, 5, 2};
+        
+        System.out.println("1. SORTED array:  " + Arrays.toString(multiMethodSorting(c)));
+        System.out.println("2. SORTED array:  " + Arrays.toString(multiMethodSorting(b)));
+        System.out.println("3. SORTED array:  " + Arrays.toString(multiMethodSorting(a)));
+		
+	}
+	public static int[] multiMethodSorting(int[] arr) {
+	       for(int i= 0; i<arr.length; i++){
+	            switch(i){
+	                case 1:
+	                    if (arr.length <= 5) 
+            return selectionSort(arr, 0, arr.length - 1);
+                            break;
+                      case 2:
+                          if(arr.length <= 10)
+            return insertionSort(arr, 0, arr.length - 1);
+                      case 3 :
+                          System.out.println("\n\n\t\t Merge Sort:  ");
+	                      return mergeSort(arr, 0, arr.length - 1);
+	            }
+	       }
+	       
+	       return arr;
+    }
+
+    private static int[] mergeSort(int[] arr, int left, int right) {
+        if (left >= right) return arr;
+        
+        int mid = left + (right - left) / 2; 
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);                                 merge(arr, left, mid, right);
+                
+        
+                
+        return arr;        
+    }
+
+    private static int[] merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        for (int i = 0; i < n1; ++i) {
+            L[i] = arr[left + i];
+        }
+        for (int j = 0; j < n2; ++j) {
+            R[j] = arr[mid + 1 + j];
+        }
+
+        int i = 0, j = 0, k = left;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k++] = L[i++];
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+        
+        
+     
+        return arr;
+    }
+    
+    private static int[] insertionSort(int[] a, int left, int right){
+        if(left >= right) return a;
+            
+        for(int i= 1; i< a.length; i++){
+                int key = a[i];
+                
+                int j;
+                for(j=i -1; j>=0 && a[j] > key; j--)
+                    a[j + 1] = a[j];
+                    
+                 
+                 a[j+1] = key;
+        }
+        
+        System.out.println("\n\n \t\t Insertion Sort:  ");
+    
+        
+        return a;
+    }
+    
+    
+   private static int[] selectionSort(int[] a, int left, int right){
+        if(left >= right) return a;
+        
+        for(int i= 0; i< a.length - 1; i++){
+                int min = i;
+               
+                for(int j=i +1; j< a.length; j++) {
+                    if(a[min] > a[j])
+                        min = j;
+                }
+                
+                if(i != min){
+                    int temp = a[i];
+                    a[i] = a[min];
+                    a[min] = temp;
+                }
+         }
+        
+        System.out.println("\n\n \t\t Selection Sort:  ");
+        
+        return a;
+    }
+}

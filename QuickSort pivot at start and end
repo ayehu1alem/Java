@@ -1,0 +1,183 @@
+import java.util.*;
+
+public class QuickSort {
+	public static void main(String[] args) {
+		Random r = new Random();
+		
+		int[] a = new int[10];
+		int[] b = {8, 5, 9, 1, 2, 4, 6, 3};
+		
+		for(int i =0; i<a.length; i++){
+		     a[i] = r.nextInt(100);
+		}
+		
+		System.out.println("Before Sort:  ");
+		System.out.print("   " + Arrays.toString(a));
+		
+		System.out.println();
+        System.out.println();
+        
+        System.out.println("After Sort:  ");
+        System.out.println("   " + Arrays.toString(quickSort4(a)));
+         
+	}
+	
+	
+	
+	private static int[] quickSort1(int[] a){	    
+	    return quickSort1(a, 0, a.length -1);
+	}
+		
+	private static int[] quickSort1(int[] a, int start, int end){	    
+	    if(start >= end) return a;
+	    	    
+	    int pivot = start;
+	    int i = start;	        
+	    int j = end;
+	    	        
+	    while(i < j){	     	          
+	        while(a[i] <= a[pivot]  && i < end) i++;
+	        while(a[j] > a[pivot]  && j > 0) j--;
+	        	        
+	         if(i < j){
+	            
+	            int temp = a[i];
+	            a[i] = a[j];
+	            a[j] = temp;
+	           
+	         }  
+	    }
+	   
+	    int temp = a[pivot];
+	    a[pivot] = a[j];
+	    a[j] = temp;
+	   	    
+	    quickSort1(a, start, j-1);	        	    
+	    return quickSort1(a, j+1, end);	    
+	}
+	
+	
+	
+	
+	
+	
+	private static int[] quickSort4(int[] a){	    
+	    return quickSort4(a, 0, a.length -1);
+	}
+		
+	private static int[] quickSort4(int[] a, int start, int end){	    
+	    if(start >= end) return a;
+	    	    
+	   int pivot = partition4(a, start, end);
+	   	    
+	    quickSort4(a, start, pivot-1);	        	    
+	    return quickSort4(a, pivot+1, end);	    
+	}
+	
+	private static int partition4(int[] a, int start, int end){
+	    
+	    int pivot = start;
+	    int i = start;	        
+	    int j = end;
+	    	        
+	    while(i < j){	     	          
+	        while(a[i] <= a[pivot]  && i < end) i++;
+	        while(a[j] > a[pivot]  && j > 0) j--;
+	        	        
+	         if(i < j){	            
+	            int temp = a[i];
+	            a[i] = a[j];
+	            a[j] = temp;
+	           
+	         }  
+	    }
+	   
+	    int temp = a[pivot];
+	    a[pivot] = a[j];
+	    a[j] = temp;
+	    
+	    
+	    return j;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private static int[] quickSort2(int[] arr) {	    	    
+	    return quickSort2(arr, 0, arr.length-1);	    
+	}
+			
+	private static int[] quickSort2(int[] arr, int start, int end) {
+	           if (start >= end) return arr;
+	           
+	           int pivot = partition(arr, start, end);
+	           
+	           quickSort2(arr, start, pivot - 1);    
+               return quickSort2(arr, pivot + 1, end);          
+        }
+        
+    private static int partition(int[] arr, int start, int end) {
+         int pivot = arr[end];         
+         int i = (start - 1);           // index of smaller element
+                  
+          for (int j = start; j < end; j++) {
+              if (arr[j] <= pivot) {
+                  i++;            
+              
+                  int temp = arr[i];
+	              arr[i] = arr[j];
+	              arr[j] = temp;              
+                }
+          }
+          i++;         
+          
+          int temp = arr[i];
+	      arr[i] = arr[end];
+	      arr[end] = temp;             
+	      
+	      return i;         
+        }
+        
+        
+        
+        
+        
+      
+    
+    
+    
+    private static int[] quickSort3(int[] arr) {	    	    
+	    return quickSort3(arr, 0, arr.length-1);	    
+	}
+         
+    private static int[] quickSort3(int[] arr, int start, int end) {
+        
+        if (start >= end) return arr;
+        
+        int pivot = end;         
+        int i = (start - 1);       
+        
+        for (int j =start; j<end; j++) {
+                  if (arr[j] <= arr[pivot]) {
+                  i++;            
+              
+                  int temp = arr[i];
+	              arr[i] = arr[j];
+	              arr[j] = temp;              
+                }
+          }
+          i++;
+          
+          int temp = arr[i];
+	      arr[i] = arr[pivot];
+	      arr[pivot] = temp;              
+                  
+         quickSort3(arr, start, i-1);    
+         return quickSort3(arr, i + 1, end);               
+        }        
+}

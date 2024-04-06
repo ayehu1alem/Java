@@ -1,0 +1,41 @@
+public class DeleteArrayElements {
+	static int count = 5;
+	public static void main(String[] args) {
+		
+		DeleteArrayElements obj = new DeleteArrayElements();
+		 int[] a = {2, 3, 4, 7, 8};
+		 
+		 obj.deleteFromEnd(a);
+		obj.print(a);
+		 
+    //	obj.deleteValue(a, 3);
+		//obj.print(a);
+	}
+	public void deleteFromEnd(int[] a){
+	      for(int i=0; i<count; i++){
+               i = count;
+           }
+           count--;
+	}
+	
+	public void deleteValue(int[] a, int val){
+	    for(int i=0; i<count; i++){
+	        a[i] = a[i+1];
+	        i = val;
+	        }
+	        count--;
+	}
+	public void deleteFromPosition(int[] a, int position){
+	     for(int i=0; i<count; i++){
+	        a[i] = a[i+1];
+	    
+	        }
+	        count--;
+	    }
+	
+	public void print(int[] a){
+	     for(int j= 0; j<count; j++){
+               System.out.print("   " + a[j]);     
+           }
+   }
+}

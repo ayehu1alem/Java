@@ -1,0 +1,44 @@
+import java.util.Arrays;
+
+class ContiguousSubArray{
+    int[] contiguousSubArray(int[] a){
+        int earlyStart = 0, start=0, end=0;
+        int currentSum = 0, greatestSum = 0;
+        
+        for(int i=0; i<a.length; i++){
+            if(a[i] > currentSum + a[i]){
+                currentSum = a[i];
+                earlyStart = i;
+            }
+            else 
+                currentSum += a[i];
+                
+           if(currentSum > greatestSum){
+               greatestSum = currentSum;
+               start = earlyStart;
+               end = i;
+           }
+        }
+        
+        int[] subArray = new int[end - start +1];
+        for(int j=0; j<subArray.length; j++)
+            subArray[j] = a[start + j];
+            
+            
+        return subArray;
+    }
+    
+    public static void main(String[] args) {
+        
+        ContiguousSubArray obj = new ContiguousSubArray();
+		int[] nums = {-4, -2, -1, 6, 1, 10, 8, -3, -5};
+		
+		System.out.println(" Given Array: " + Arrays.toString(nums));
+		
+		
+		System.out.println();
+		
+		System.out.println("Contiguous: " + Arrays.toString(obj.contiguousSubArray(nums)));
+		
+	}
+}

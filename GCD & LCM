@@ -1,0 +1,57 @@
+/*This is sample program to calculate the GCD and LCM of two given numbers */ 
+
+import java.util.Scanner;
+
+public class GCD_LCM {
+    static int gcd(int x, int y) {
+    //    int rem = 0, greater, smaller;
+        
+        int greater = (x > y) ? x : y;  
+        int smaller = (x < y) ? x : y;     
+        
+       int rem = smaller;
+       //smaller;
+       
+      
+       
+        while(greater % smaller != 0) {            
+            rem = greater % smaller; 
+            greater = smaller; 
+            smaller = rem;
+        } 
+            
+       return rem;
+    }
+    
+    static int lcm(int x, int y) {
+        int greater;
+        greater = (x > y) ? x : y; // a is greater number
+        
+        while(true) {
+            if(greater % x == 0 && greater % y == 0)
+                return greater; 
+            
+            greater++;
+         } 
+         
+   }
+   
+   public static void main(String args[]) {
+     /**  Scanner input = new Scanner(System.in);
+       
+       System.out.println("Enter the two numbers: ");
+       
+       int x = input.nextInt();
+       int y = input.nextInt();
+       */
+       
+       int x = 8;
+       int y = 32;
+       System.out.println("The GCD of two numbers is: " + gcd(x, y)); 
+       
+       System.out.println("The LCM of two numbers is: " + lcm(x, y));
+      // input.close();
+       
+  } 
+}
+

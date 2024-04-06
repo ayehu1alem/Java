@@ -1,0 +1,44 @@
+public class Main {
+	public static class Person{
+		String name;
+		int age;
+
+		Person(String name, int age) {
+			this.name = name;
+			this.age = age;
+		}
+		public String toString(){
+		    return this.name + "\n" + this.age + "\n";
+		}
+	}
+	public static class Hero extends Person{
+	    String power;
+	    
+	    Hero(String name, int age, String power){
+	        super(name, age);
+	        this.power = power;
+	        
+	        }
+	        public String toString(){
+	            return super.toString() + this.power;
+	            }
+	    }
+	    
+	public static void main(String[] args) {
+
+		Hero hero1 = new Hero("Batman", 42, "$$$");
+		Hero hero2 = new Hero("Super Man", 38, "Flying man");
+		Hero hero3 = new Hero("Diana", 30, "AMAZONIAN, loving girl");
+		
+		System.out.println(hero1);
+		System.out.println();
+		
+		System.out.println(hero2);
+		System.out.println();
+		
+		System.out.println(hero3);
+	}
+}println();
+		System.out.println("                    " + hero3);
+	}
+}

@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Enter length of the array: ");
+		int arrayLength = scanner.nextInt();
+		
+		int[] array = new int[arrayLength];	
+		for(int i=0, j=0; i<array.length; i++, j++){
+			System.out.println("Enter a " + j + " elements of the array: ");
+			array[i] = scanner.nextInt();
+		}
+		
+		int result = isCentered15(array);
+		System.out.println("The result is:  \n" + result);
+	}
+	
+	
+	public static int isCentered15(int[] array) {
+	  int isCentered = 0;
+	   int lowerIndex = 0;
+	   int upperIndex = 0;
+	   int sum = 0;
+	   
+	   if (array.length % 2 == 0) {
+	   	lowerIndex = (array.length -1)/2;
+	   	upperIndex = array.length / 2;
+	   	}
+	   	else{
+	   		lowerIndex = array.length / 2;
+	   		upperIndex = lowerIndex;
+	   	}
+	   	while(lowerIndex >= 0  &&  upperIndex < array.length){
+	   	  sum = 0;
+	   	  for (int i = lowerIndex; i <= upperIndex; i++) {
+	   	  	sum += array[i];
+	   	  	}
+	   	  	if(sum == 15){
+	   	  		isCentered = 1;
+	   	  		break;
+	   	  	}
+	   	  	lowerIndex--;
+	   	  	upperIndex++;
+	   	   }
+	   	  return isCentered;
+}
+}

@@ -1,0 +1,13 @@
+import java.lang.System;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		int[] a = {7, 5, 3, 33, 39, 1, 11, 22, 4};
+		int[] b = new int[a.length];
+		
+		System.arraycopy(a, 0, b, 0, a.length);
+		for(int k =0; k<b.length; k++) 
+		    System.out.print("  " + b[k]);
+	}
+}

@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Enter number: ");
+		int number = scanner.nextInt();
+		
+		System.out.println("How meny times each digit shall repeat: ");
+		int catLen = scanner.nextInt();
+		
+		int result = checkConcatnatedSum(number, catLen);
+		System.out.println("The result is: " + result);
+	}
+	public static int checkConcatnatedSum(int num, int catLen){
+		if(num <= 0 || catLen <=0){
+			return 0;
+		}
+		else{
+			int originalNum = num	;
+			int module = num%10;
+			num = num/10;
+			int sum1 = 0;
+			int sum2 = 0;
+			while(num != 0){ 
+				for(int iterate=0; iterate<catLen; iterate++){  
+					sum1 *= 10;
+					sum1 += module;		
+				}
+				sum2 += sum1;
+				sum1 = 0;
+				
+				module = num%10;
+				num = num/10;
+			}
+			for(int iterate=0; iterate<catLen; iterate++){  
+					sum1 *= 10;
+					sum1 += module;		
+				}
+				sum2 += sum1;
+				if(sum2 == originalNum){
+					return 1;
+					}
+					else{
+						return 0;
+						}
+		}
+	}
+}

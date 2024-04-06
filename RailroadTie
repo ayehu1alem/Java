@@ -1,0 +1,40 @@
+public class Main {
+	public static void main(String[] args) {
+		int[] a = {1, 2};
+		int[] b = {1, 2, 0, 1, 2, 0, 1, 2};
+		int[] c = {3, 3, 0, 3, 3, 0, 3, 3, 0, 3, 3};
+		int[] d = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		int[] e = {0, 0, 0, 0};
+		
+	for (int[] arr : new int[][]{a, b, c, d, e}) {
+            System.out.println("This array is: " + (isRailroadTie(arr)));
+        }
+    }
+
+    private static int isRailroadTie(int[] a) {
+        if (a.length <= 1 || a[0] == 0 || a[a.length - 1] == 0) {
+            return 0;  
+       // Handle edge cases
+        }
+
+        for (int i = 1; i < a.length - 1; i++) {
+            if (a[i] == 0) {
+                if (a[i - 1] == 0 || a[i + 1] == 0) {
+                    return 0;  
+       // Zero doesn't have two non-zero neighbors
+                }
+            } 
+            
+            else {
+                if (a[i - 1] != 0 && a[i + 1] != 0) {
+                    return 0; 
+      // Non-zero element has two non-zero neighbors
+                }
+            }
+        }
+
+        return 1;  
+       
+       // True if all conditions are met
+    }
+}

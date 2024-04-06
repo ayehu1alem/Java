@@ -1,0 +1,141 @@
+import java.util.*;
+
+public class Sort {
+	public static void main(String[] args) {
+		
+		Random r = new Random();
+		
+		int[] a = new int[10];
+		int[] b = new int[10];
+		int[] c = new int[10];
+		int[] d = new int[10];
+		
+		
+		for(int i=0; i<a.length; i++)
+		         a[i] = r.nextInt(10);
+		
+		for(int j=0; j<b.length; j++)
+		         b[j] = r.nextInt(20);
+		
+		for(int k=0; k<c.length; k++)
+		         c[k] = r.nextInt(50);
+		
+		for(int ii=0; ii<d.length; ii++)
+		         d[ii] = r.nextInt(100);
+		
+		
+		for(int[] array : new int[][]{a, b, c, d}){
+		    System.out.println("  ORIGINAL:         " + Arrays.toString(array));
+		    System.out.println();
+		    System.out.println("  2.Sorted:         " + Arrays.toString(mergeSort2(array)));
+		    System.out.println("  3. Sorted:        " + Arrays.toString(mergeSort3(array)));
+		    System.out.println();
+		    System.out.println();
+	        System.out.println();
+		    
+		}
+	
+		
+		//mergeSort(b);
+		
+		
+		
+	}
+	
+
+	
+	
+	
+	private static int[] mergeSort2(int[] a) {
+	    return mergeSort2(a, 0, a.length - 1);
+	}
+	private static int[] mergeSort2(int[] a, int start, int end) {
+        if (start >= end) return a;
+        
+        int mid = (start + end) / 2;
+        
+        mergeSort2(a, start, mid);         // Sort left subarray
+        mergeSort2(a, mid + 1, end);    // Sort right subarray
+        merge2(a, start, mid, end);        // Merge sorted subarrays
+        
+        return a;
+	}
+
+private static void merge2(int[] a, int start, int mid, int end) {
+       
+        int i = start, j = mid+1, k = 0;         
+        int[] temp = new int[end - start + 1]; 
+               
+        while (i <= mid && j <= end) { 
+            if (a[i] <= a[j])
+                temp[k++] = a[i++];
+                
+            else 
+                temp[k++] = a[j++];        
+        }
+        
+        while (i <= mid) temp[k++] = a[i++];
+        while (j <= end) temp[k++] = a[j++];
+                
+        for (i = start; i <= end; i++) {
+            a[i] = temp[i - start];
+        }
+        
+   
+    }
+    
+    
+    
+    
+    private static int[] mergeSort3(int[] a){
+	    int len = a.length;
+	    if(len <= 1) return a;
+	    
+	    int mid = len/2;
+	    int[] leftArray = new int[mid];
+	    int[] rightArray = new int[len - mid];
+	    
+	    int i = 0, j = 0;
+	    for(; i<len; i++){
+	        if(i < mid)
+	            leftArray[i] = a[i];
+	            
+	       else{
+	           rightArray[j] = a[i];
+	           j++;
+	        }
+	    }
+	    
+	    mergeSort3(leftArray);
+	    mergeSort3(rightArray);
+	    merge3(a, leftArray, rightArray);   
+	    
+	    
+	    return a;
+	}
+	
+	private static void merge3(int[] a, int[] leftArray, int[] rightArray){
+	    int len = a.length;
+	    int leftSize = len/2;
+	    int rightSize = len - leftSize;
+	    
+	    int i =0;      //Index of original array (a)
+	    int j = 0;     //Index of left array
+	    int k = 0;     //Index of right array
+	    
+	    while(j < leftSize  && k < rightSize){
+	        if(leftArray[j] < rightArray[k])
+	            a[i++] = leftArray[j++];
+	            
+	       else 
+	           a[i++] = rightArray[k++];
+	    }
+	    
+	    while(j < leftSize) 
+	        a[i++] = leftArray[j++];
+	    
+	    while(k < rightSize) 
+	        a[i++] = rightArray[k++];
+	    
+	}
+}

@@ -1,0 +1,43 @@
+  import java.util.*;
+
+public class Main {
+	 public static void main(String[] args) {
+	    // Example usage
+        int[] unsortedArray = {5, 2, 7, 1, 4, 3, 6};
+        quickSort(unsortedArray, 0, unsortedArray.length - 1);
+        System.out.println("Sorted array: " + Arrays.toString(unsortedArray));
+        
+	}
+	
+	
+	public static void quickSort(int[] arr, int low, int high) {
+	           if (low < high) {
+            
+            int pivot = partition(arr, low, high);
+            quickSort(arr, low, pivot - 1); // Sort left sub-array
+            quickSort(arr, pivot + 1, high); // Sort right sub-array
+          }
+        }
+        
+        private static int partition(int[] arr, int low, int high) {
+          
+       //   int pivotIndex =
+          int pivot = arr[high];
+          int i = (low - 1); // index of smaller element
+        
+          for (int j = low; j <= high - 1; j++) {
+            if (arr[j] <= pivot) {
+              i++;
+              int temp = arr[i];
+              arr[i] = arr[j];
+              arr[j] = temp;
+            }
+          }
+        
+          int temp = arr[i + 1];
+          arr[i + 1] = arr[high];
+          arr[high] = temp;
+          return (i + 1);
+        }
+        
+}

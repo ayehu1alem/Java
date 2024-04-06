@@ -1,0 +1,31 @@
+public class Main {
+	private static long cache;
+	public static void main(String[] args) {
+	    long num = 6;
+	    System.out.println(" \t" + fibonacciWithMemoization(num));
+	    
+	    
+	 //   System.out.println(" \t" + fibonacci(num));
+	    
+	}
+	private static long fibonacciWithMemoization(long n){
+	    if(n == 0 || n == 1) return 1;
+	    
+	    if(cache[n] != 0) {
+	        return cache[n];
+	    }
+	   
+	   long nth = fibonacciWithMemoization(n-1) +  fibonacciWithMemoization(n - 2);
+	    
+	    cache[n] = nth_n;
+	    
+	    return nth_n;
+	}
+	/*
+	private static long fibonacci(long n){
+	    if(n == 0 || n == 1) return 1;
+	    
+	    return fibonacci(n-1) +  fibonacci(n - 2);
+	}
+	*/
+}

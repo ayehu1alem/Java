@@ -1,0 +1,50 @@
+import java.util.Arrays;
+
+public class CommonElements {
+
+  public static void main(String[] args) {
+     int[] a = {1, 8, 2, 3};
+     int[] b = {};
+     
+     int[] result = function(a, b);
+     
+     System.out.println("Common Elements are: ");    
+     System.out.println("\t \t" + Arrays.toString(result));    
+     
+  }  
+  
+  static int[] function(int[] first, int[] second){
+    
+    if(first == null || second == null)
+       return null;
+       
+    if(first.length == 0 || second.length == 0)
+       return new int[]{};
+       
+    else{
+        int count = (first.length > second.length) ? second.length : first.length;
+             
+        int[] temp = new int[count];
+        int index = 0;
+        
+        for(int i=0; i<first.length; i++){
+            for(int j=0; j<second.length; j++){
+                if(first[i] == second[j]){
+                    temp[index] = first[i];
+                    index += 1;
+                }
+            }
+        }
+        if(index == count){
+            return temp;
+        } else{
+            int[] commonElements = new int[index];
+            for(int k=0; k<commonElements.length; k++){
+                commonElements[k] = temp[k];
+            }
+            return commonElements;
+        }
+        
+    }
+  }
+}

@@ -1,0 +1,15 @@
+public class Main {
+	public static void main(String[] args) {
+		String a = binary(233, "");
+		System.out.println("\t\t" + a);
+		
+
+	}
+	private static String binary(int dec, String result){
+	    if(dec == 0) return result;
+	    
+	    result = dec%2 + result;
+	    return binary(dec/2, result);
+	}
+	
+}

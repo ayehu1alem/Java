@@ -1,0 +1,62 @@
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+	public int[] twoSum1(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target) {
+                return new int[]{i, j};
+            }
+        }
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
+public int[] twoSum2(int[] nums, int target) {
+    int i = 0;
+    int j = 1;
+    while (i < nums.length && j < nums.length) {
+        if (i == j) {
+            j++;
+            continue;
+        }
+        if (nums[i] + nums[j] == target) {
+            return new int[]{i, j};
+        }
+        if (j == nums.length - 1) {
+            i++;
+            j = i + 1;
+        } else {
+            j++;
+        }
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
+public int[] twoSum3(int[] nums, int target) {
+    Arrays.sort(nums);
+    for (int i = 0; i < nums.length; i++) {
+        int remaining = target - nums[i];
+        int index = Arrays.binarySearch(nums, i + 1, nums.length, remaining);
+        if (index >= 0) {
+            return new int[]{i, index};
+        }
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
+public int[] twoSum4(int[] nums, int target) {
+    return twoSum4Helper(nums, target, 0, nums.length - 1);
+}
+
+private int[] twoSum4Helper(int[] nums, int target, int left, int right) {
+    if (left >= right) {
+        throw new IllegalArgumentException("No two sum solution");
+    }
+    int remaining = target - nums[left];
+    int index = Arrays.binarySearch(nums, left + 1, right + 1, remaining);
+    if (index >= 0) {
+        return new int[]{left, index};
+    }
+    return twoSum4Helper(nums, target, left + 1, right);
+}
+
+}
