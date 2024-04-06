@@ -30,23 +30,9 @@ public class Main {
 		int t2 = 10;
 		int t3= 13;
 		
-		
-		
-		System.out.println("Given Sorted Array: " + Arrays.toString(nums));
-		
+
 		System.out.printf("\nThe target, %d, is:  %s", t, Arrays.toString(twoSum(nums, t)));
-		
 		System.out.printf("\nThe target, %d, is:  %s", t1, Arrays.toString(twoSum(nums, t1)));
-		
-		System.out.printf("\nThe target, %d, is:  %s", t2, Arrays.toString(twoSum(nums, t2)));
-		
-		System.out.printf("\nThe target, %d, is:  %s", t3, Arrays.toString(twoSum(nums, t3)));
-		
-		/*System.out.println("The target is: " + Arrays.toString(twoSum(nums, t1)));
-		
-		System.out.println("The target is: " + Arrays.toString(twoSum(nums, t2)));
-		
-		System.out.println("The target is: " + Arrays.toString(twoSum(nums, t3)));*/
 		
 	}
 }
